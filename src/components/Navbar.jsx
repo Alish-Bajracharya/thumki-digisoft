@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaPhone, FaEnvelope } from "react-icons/fa";
-import Logo from "../assets/logo/logo.jpeg"; 
+import Logo from "../assets/logo/logo.jpeg";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [showTopNav, setShowTopNav] = useState(true);
+  const [showBottomNav, setShowBottomNav] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  const [showBottomNav, setShowBottomNav] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -19,37 +19,42 @@ const Navbar = () => {
     { name: "Gallery", href: "#gallery" },
   ];
 
-  // Scroll behavior
+  // Handle scroll
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > lastScrollY) {
-        setVisible(false);
+      const currentScrollY = window.scrollY;
+
+      // Hide top nav when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setShowTopNav(false);
         setShowBottomNav(false);
       } else {
-        setVisible(true);
+        setShowTopNav(true);
         setShowBottomNav(true);
       }
-      setLastScrollY(window.scrollY);
-      setScrolled(window.scrollY > 60);
+
+      // Add background to top nav after scroll
+      setScrolled(currentScrollY > 50);
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   return (
     <>
-      {/* Navbar Container */}
+      {/* Top Navbar */}
       <div
         className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
-          visible ? "translate-y-0" : "-translate-y-full"
+          showTopNav ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        {/* Top Bar */}
         <div
-          className={`flex items-center justify-between px-6 md:px-14 py-3 relative transition-all duration-500 ${
+          className={`flex items-center justify-between px-6 md:px-14 py-3 transition-all duration-500 ${
             scrolled
-              ? "bg-black/60 backdrop-blur-md shadow-lg"
+              ? "bg-black/70 backdrop-blur-md shadow-lg"
               : "bg-gradient-to-b from-black/80 to-transparent"
           }`}
         >
@@ -66,15 +71,15 @@ const Navbar = () => {
           </div>
 
           {/* Center Logo */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-8 md:-bottom-10">
+          <div className="absolute mt-12 left-1/2 transform -translate-x-1/2">
             <a
-              href="#home"
-              className="bg-white rounded-full shadow-lg border-4 border-amber-500 p-2 flex items-center justify-center hover:scale-105 transition-transform duration-300"
+              href="/"
+              className="bg-white rounded-full shadow-lg border-4 border-amber-500 p-2 flex items-center justify-center hover:scale-110 transition-transform duration-500"
             >
               <img
                 src={Logo}
                 alt="Thumki Resort Logo"
-                className="w-16 h-16 md:w-40 md:h-20 rounded-full object-cover"
+                className="w-36 h-16 md:w-40 md:h-20 rounded-full object-cover"
               />
             </a>
           </div>
@@ -83,7 +88,7 @@ const Navbar = () => {
           <div className="hidden md:flex">
             <a
               href="#book"
-              className="bg-gradient-to-r from-blue-900 to-amber-700 text-white px-5 py-2 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition transform duration-300"
+              className="bg-gradient-to-r from-blue-900 to-amber-700 text-white px-5 py-2 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
             >
               BOOK STAY
             </a>
@@ -98,11 +103,11 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Bottom Navigation */}
+        {/* Bottom Navbar */}
         <div
-          className={`hidden md:flex justify-center mt-14 transition-all duration-500 ${
+          className={`hidden md:flex justify-center transition-all duration-500 ${
             showBottomNav
-              ? "opacity-100 translate-y-0"
+              ? "opacity-100 translate-y-0 mt-14"
               : "opacity-0 -translate-y-10 pointer-events-none"
           }`}
         >
@@ -132,7 +137,6 @@ const Navbar = () => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Close button */}
         <div className="flex justify-end p-6">
           <button
             className="text-white text-3xl"
@@ -142,7 +146,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Links */}
         <nav className="flex flex-col items-center mt-10 space-y-8 text-white text-lg">
           {navLinks.map((link, i) => (
             <a

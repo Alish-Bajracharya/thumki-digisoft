@@ -1,6 +1,6 @@
 import RoomComponent from "../RoomComponent";
 
-// Importing Images
+// WebP versions of rooms
 import room1 from "../../assets/Rooms/room1.JPG";
 import room2 from "../../assets/Rooms/room2.JPG";
 import room3 from "../../assets/Rooms/room3.JPG";
@@ -16,11 +16,11 @@ const Rooms = () => {
           Thumki Resorts
         </h6>
         <h1 className="lg:text-4xl md:text-4xl text-3xl leading-normal font-bold text-center">
-          Luxury Room&apos;s
+          Luxury Rooms
         </h1>
 
         <div className="mt-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <RoomComponent type="King" price="100" img={room1} />
             <RoomComponent type="Superior" price="100" img={room2} />
             <RoomComponent type="Deluxe" price="100" img={room3} reverse />
