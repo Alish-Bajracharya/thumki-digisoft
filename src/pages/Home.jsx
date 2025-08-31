@@ -6,6 +6,9 @@ import Room from "../components/Home/Rooms";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Contact from "../components/Home/Contact";
+import Review from "../components/Home/Reviews";
+import Activities from "../components/Home/Activities";
+import DiningAndConference from "../components/Home/DiningConferenceSection";
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
       <About />
       <Room />
       <Amenities />
+      <DiningAndConference />
+      <Activities />
+      <Review />
       <Gallery/>
       <Contact />
       <Footer/> 

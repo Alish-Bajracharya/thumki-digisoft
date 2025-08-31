@@ -1,76 +1,97 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import {
-  FaWifi,
-  FaCoffee,
-  FaBath,
-  FaParking,
-  FaHotdog,
-  FaUtensils,
-  FaFire,
-  FaRegBuilding,
-  FaTree,
-  FaGuitar,
-  FaShuttleVan,
-  FaMusic,
-  FaGamepad,
-  FaRulerCombined,
-} from "react-icons/fa";
-
-const amenities = [
-  { name: "Free Wifi", icon: FaWifi },
-  { name: "Coffee & Tea", icon: FaCoffee },
-  { name: "Luxurious Bath", icon: FaBath },
-  { name: "Parking Space", icon: FaParking },
-  { name: "BBQ Area", icon: FaFire },
-  { name: "Restaurant & Dining", icon: FaUtensils },
-  { name: "Meeting Hall", icon: FaRegBuilding },
-  { name: "Scenic Views & Gardens", icon: FaTree },
-  { name: "Spacious Dance & Singing Area", icon: FaGuitar },
-  { name: "Shuttle Service", icon: FaShuttleVan },
-  { name: "Live Music & Entertainment", icon: FaMusic },
-  { name: "Games & Recreation", icon: FaGamepad },
-  { name: "Event Spaces / Banquet", icon: FaRulerCombined },
-  { name: "Bonfire / Outdoor Fun", icon: FaFire },
-];
+  Dumbbell,
+  Martini,
+  Waves,
+  Flower2,
+  Utensils,
+  WashingMachine,
+  BrickWallFireIcon,
+} from "lucide-react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import bbq from '../../assets/facilites/bbq.jpg'
+import bar from '../../assets/facilites/bar.jpg'
 
 const Amenities = () => {
-  return (
-    <section className="w-full py-16 bg-gradient-to-r from-cyan-50 via-white to-amber-50">
-      <div className="container mx-auto px-6 md:px-12">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-amber-500 font-semibold text-lg md:text-xl">
-            Explore Our
-          </p>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-gray-800">
-            Resort Amenities
-          </h2>
-          <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            From relaxing moments to joyful gatherings, our resort offers everything you need for a perfect stay.
-          </p>
-        </div>
+  const facilities = [
+    {
+      title: "THE BBQ",
+      img: bbq,
+      icon: <BrickWallFireIcon className="w-6 h-6" />,
+    },
+    {
+      title: "THE BAR",
+      img: bar,
+      icon: <Martini className="w-6 h-6" />,
+    },
+    {
+      title: "THE YOGA",
+      img: "https://media.istockphoto.com/id/2182805348/photo/unrecognizable-black-woman-meditating-in-lotus-position-at-yoga-studio.webp?a=1&b=1&s=612x612&w=0&k=20&c=LgRv-LSZWT_WekA0leXqgSjIKjnRpa7VlLbuNSKuYgY=",
+      icon: <Flower2 className="w-6 h-6" />,
+    },
+    {
+      title: "SWIMMING POOL",
+      img: "https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=1170&q=80",
+      icon: <Waves className="w-6 h-6" />,
+    },
+    {
+      title: "RESTAURANT",
+      img: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=1170&q=80",
+      icon: <Utensils className="w-6 h-6" />,
+    },
+    {
+      title: "LAUNDRY",
+      img: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1170&q=80",
+      icon: <WashingMachine className="w-6 h-6" />,
+    },
+  ];
 
-        {/* Amenities grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-          {amenities.map((amenity, index) => {
-            const Icon = amenity.icon;
-            return (
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center p-6 bg-white/80 backdrop-blur-md rounded-2xl shadow-md hover:shadow-2xl transform hover:scale-105 transition-all duration-500"
-              >
-                <div className="text-blue-900 text-4xl mb-4 transition-transform duration-500 group-hover:scale-110">
-                  <Icon />
+  return (
+    <div className="px-6 py-12 bg-amber-100" >
+      <h1 className="lg:text-4xl text-orange-400 text-center text-3xl font-bold">THUMKI</h1>
+      <h2 className="text-3xl  font-bold text-center mb-4">Resort Facilities</h2>
+      <p className="text-center max-w-2xl mx-auto text-gray-600 mb-10">
+        We want your stay at our thumki resort to be truly unforgettable. That is
+        why we give special attention to all of your needs so we can ensure an
+        experience quite unique.
+      </p>
+
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        slidesPerView={1}
+        spaceBetween={20}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000, disableOnInteraction: false }}
+        breakpoints={{
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3},
+        }}
+        className="pb-10"
+      >
+        {facilities.map((facility, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+              <img
+                src={facility.img}
+                alt={facility.title}
+                className="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+              />
+              <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
+                <div className="flex items-center gap-2 text-lg font-semibold">
+                  {facility.icon}
+                  <span>{facility.title}</span>
                 </div>
-                <h3 className="font-semibold text-lg text-gray-800 text-center">
-                  {amenity.name}
-                </h3>
               </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 };
 

@@ -5,5 +5,5 @@ const ScrollToTop = () => {
     <div>ScrollToTop</div>
   )
 }
-
-export default ScrollToTop
+ 
+export default ScrollToTop;

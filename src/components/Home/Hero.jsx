@@ -1,13 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { EffectFade, Autoplay } from "swiper/modules";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import slider1 from "../../assets/Sliders/slider1.JPG";
 import slider2 from "../../assets/Sliders/slider7.JPG";
 import slider3 from "../../assets/Sliders/slider5.JPG";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const slides = [
   { title: "Your Luxury Hotel for Vacation", bg: slider1, btnText: "Room & Suites" },
@@ -44,8 +47,27 @@ const Hero = () => {
     }
   };
 
+  useEffect(() => {
+    // Scroll-trigger fade-in for whole Hero section
+    gsap.fromTo(
+      ".hero-container",
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".hero-container",
+          start: "top 85%", // when hero enters viewport
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="relative w-full h-[600px] lg:h-[860px]">
+    <div className="relative w-full h-[600px] lg:h-[860px] hero-container">
       <Swiper
         modules={[EffectFade, Autoplay]}
         effect={"fade"}
@@ -61,7 +83,7 @@ const Hero = () => {
             ref={(el) => (slideRefs.current[index] = el)}
             style={{ backgroundImage: `url(${slide.bg})` }}
           >
-            {/* Dark Gradient Overlay */}
+            {/* Dark Overlay */}
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
 
             {/* Text Content */}
