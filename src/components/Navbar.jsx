@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaBars, FaTimes, FaPhone, FaEnvelope } from "react-icons/fa";
-import Logo from "../assets/logo/logo.jpeg";
+import Logo from "../assets/logo/logo.png";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showTopNav, setShowTopNav] = useState(true);
-  const [showBottomNav, setShowBottomNav] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [scrolled, setScrolled] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "#home" },
@@ -19,155 +15,88 @@ const Navbar = () => {
     { name: "Gallery", href: "#gallery" },
   ];
 
-  // Handle scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Hide top nav when scrolling down, show when scrolling up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShowTopNav(false);
-        setShowBottomNav(false);
-      } else {
-        setShowTopNav(true);
-        setShowBottomNav(true);
-      }
-
-      // Add background to top nav after scroll
-      setScrolled(currentScrollY > 50);
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
-
   return (
-    <>
-      {/* Top Navbar */}
+    <header className="fixed top-0 left-0 w-full z-50">
+      {/* Header background */}
       <div
-        className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
-          showTopNav ? "translate-y-0" : "-translate-y-full"
-        }`}
+        className="relative w-full bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1602080755398-2dbf1152a01d?auto=format&fit=crop&w=1470&q=80')",
+        }}
       >
-        <div
-          className={`flex items-center justify-between px-6 md:px-14 py-3 transition-all duration-500 ${
-            scrolled
-              ? "bg-black/70 backdrop-blur-md shadow-lg"
-              : "bg-gradient-to-b from-black/80 to-transparent"
-          }`}
-        >
-          {/* Left Contact */}
-          <div className="hidden md:flex items-center space-x-6 text-white/80 text-sm">
-            <span className="flex items-center space-x-2">
-              <FaPhone />
-              <a href="tel:+9779814143738">+977-9814143738</a>
-            </span>
-            <span className="flex items-center space-x-2">
-              <FaEnvelope />
-              <a href="mailto:info@thumkiresort.com">info@thumkiresort.com</a>
-            </span>
-          </div>
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
 
-          {/* Center Logo */}
-          <div className="absolute mt-12 left-1/2 transform -translate-x-1/2">
-            <a
-              href="/"
-              className="bg-white rounded-full shadow-lg border-4 border-amber-500 p-2 flex items-center justify-center hover:scale-110 transition-transform duration-500"
-            >
-              <img
-                src={Logo}
-                alt="Thumki Resort Logo"
-                className="w-36 h-16 md:w-40 md:h-20 rounded-full object-cover"
-              />
-            </a>
-          </div>
+        {/* Logo + Hamburger */}
+        <div className="relative flex items-center justify-between px-6 lg:px-14 py-4">
+          <a
+            href="/"
+            className="flex items-center justify-center shadow-lg p-2 bg-white border-4 border-amber-500 hover:scale-110 transition-transform duration-500"
+          >
+            <img
+              src={Logo}
+              alt="Thumki Resort Logo"
+              className="w-36 h-16 md:w-40 md:h-20 object-cover"
+            />
+          </a>
 
-          {/* Right Book Stay */}
-          <div className="hidden md:flex">
-            <a
-              href="#book"
-              className="bg-gradient-to-r from-blue-900 to-amber-700 text-white px-5 py-2 rounded-full shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300"
-            >
-              BOOK STAY
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
+          {/* Hamburger */}
           <button
-            className="text-white text-3xl md:hidden"
+            className="text-white text-3xl lg:text-4xl z-50"
             onClick={() => setMenuOpen(true)}
           >
             <FaBars />
           </button>
         </div>
 
-        {/* Bottom Navbar */}
+        {/* Fullscreen Menu Overlay */}
         <div
-          className={`hidden md:flex justify-center transition-all duration-500 ${
-            showBottomNav
-              ? "opacity-100 translate-y-0 mt-14"
-              : "opacity-0 -translate-y-10 pointer-events-none"
+          className={`fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex flex-col items-center justify-center transition-transform duration-500 ${
+            menuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div
-            className={`flex space-x-10 px-8 py-3 rounded-full transition-all duration-500 ${
-              scrolled
-                ? "bg-black/70 backdrop-blur-lg shadow-lg"
-                : "bg-white/10 backdrop-blur-md border border-white/20"
-            }`}
-          >
-            {navLinks.map((link, i) => (
-              <a
-                key={i}
-                href={link.href}
-                className="text-white font-medium hover:text-sky-400 transition"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Fullscreen Menu */}
-      <div
-        className={`fixed top-0 right-0 h-full w-3/4 sm:w-1/2 bg-gradient-to-b from-black via-gray-900 to-sky-900 z-50 transform transition-transform duration-500 rounded-l-3xl shadow-2xl ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex justify-end p-6">
+          {/* Close button */}
           <button
-            className="text-white text-3xl"
+            className="absolute top-6 right-6 text-white text-4xl"
             onClick={() => setMenuOpen(false)}
           >
             <FaTimes />
           </button>
-        </div>
 
-        <nav className="flex flex-col items-center mt-10 space-y-8 text-white text-lg">
-          {navLinks.map((link, i) => (
+          {/* Navigation */}
+          <nav className="flex flex-col items-center space-y-8 text-white text-3xl md:text-4xl font-bold">
+            {navLinks.map((link, i) => (
+              <a
+                key={i}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-amber-400 transition"
+              >
+                {link.name}
+              </a>
+            ))}
+
             <a
-              key={i}
-              href={link.href}
+              href="#book"
+              className="mt-6 bg-gradient-to-r from-amber-400 to-amber-600 text-gray-900 px-8 py-3 font-semibold shadow-lg hover:scale-105 transition"
               onClick={() => setMenuOpen(false)}
-              className="hover:text-sky-400 transition"
             >
-              {link.name}
+              BOOK STAY
             </a>
-          ))}
 
-          <a
-            href="#book"
-            className="mt-6 bg-gradient-to-r from-sky-400 to-sky-600 text-white px-6 py-2 rounded-full shadow-md hover:scale-105 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            BOOK STAY
-          </a>
-        </nav>
+            {/* Optional contact info */}
+            <div className="flex flex-col items-center mt-8 space-y-2 text-lg text-gray-300">
+              <span className="flex items-center gap-2">
+                <FaPhone /> +977-9814143738
+              </span>
+              <span className="flex items-center gap-2">
+                <FaEnvelope /> info@thumkiresort.com
+              </span>
+            </div>
+          </nav>
+        </div>
       </div>
-    </>
+    </header>
   );
 };
 

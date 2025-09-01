@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { motion, AnimatePresence } from "framer-motion";
@@ -16,7 +16,17 @@ import room4 from "../../assets/Rooms/room4.JPG";
 const Rooms = () => {
   const categories = ["Deluxe", "Twin"];
   const [activeCategory, setActiveCategory] = useState("Deluxe");
-  const [direction, setDirection] = useState(0); // 1 for next/right, -1 for prev/left
+  const [direction, setDirection] = useState(0);
+
+  // Preload images for smooth switch
+  useEffect(() => {
+    Object.values(roomCategories).forEach((room) => {
+      room.images.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    });
+  }, []);
 
   const roomCategories = {
     Deluxe: {
@@ -24,13 +34,13 @@ const Rooms = () => {
       description: "Elegant room with premium interiors and stunning views.",
       amenities: [
         "LED TV With Channel",
-        "Electric Kitley for Coffee/Tea",
+        "Electric Kettle for Coffee/Tea",
         "Hair Dryer",
-        "WI-FI",
-        "Push to D&D",
+        "High-Speed Wi-Fi",
+        "Do Not Disturb System",
         "Mini Bar",
         "Iron & Iron Board",
-        "Bathroom Amenities",
+        "Luxury Bathroom Amenities",
         "Safe Shield Bathroom Fixture",
       ],
       images: [room1, room2],
@@ -43,10 +53,10 @@ const Rooms = () => {
         "Work Desk",
         "Air Conditioning",
         "Smart TV",
-        "Wi-Fi",
+        "High-Speed Wi-Fi",
         "Mini Fridge",
         "Hair Dryer",
-        "Bathroom Amenities",
+        "Luxury Bathroom Amenities",
       ],
       images: [room3, room4],
     },
@@ -63,7 +73,7 @@ const Rooms = () => {
 
   const slideVariants = {
     enter: (dir) => ({
-      x: dir > 0 ? 300 : -300,
+      x: dir > 0 ? "100%" : "-100%",
       opacity: 0,
     }),
     center: {
@@ -72,7 +82,7 @@ const Rooms = () => {
       transition: { duration: 0.6, ease: "easeOut" },
     },
     exit: (dir) => ({
-      x: dir > 0 ? -300 : 300,
+      x: dir > 0 ? "-100%" : "100%",
       opacity: 0,
       transition: { duration: 0.5, ease: "easeIn" },
     }),
@@ -116,10 +126,10 @@ const Rooms = () => {
             <div
               key={category}
               onClick={() => handleCategoryClick(category)}
-              className={`p-6 rounded-l-2xl cursor-pointer transition shadow-sm ${
+              className={`p-6 cursor-pointer transition shadow-sm border-l-4 ${
                 activeCategory === category
-                  ? "bg-amber-50 border-l-4 border-amber-500 shadow-md"
-                  : "bg-white hover:bg-gray-50"
+                  ? "bg-amber-50 border-amber-500 shadow-md"
+                  : "bg-white border-transparent hover:bg-gray-50"
               }`}
             >
               <h2 className="text-2xl font-bold text-gray-800">{category} Room</h2>
@@ -135,7 +145,7 @@ const Rooms = () => {
                     e.stopPropagation();
                     alert(`More info about ${category} Room coming soon!`);
                   }}
-                  className="flex items-center gap-2 text-sm font-medium text-amber-600 border border-amber-500 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-white transition"
+                  className="flex items-center gap-2 text-sm font-medium text-amber-600 border border-amber-500 px-4 py-2 hover:bg-amber-500 hover:text-white transition"
                 >
                   <Info className="w-4 h-4" /> More Info
                 </button>
@@ -144,7 +154,7 @@ const Rooms = () => {
           ))}
         </motion.div>
 
-        {/* Right - Image Slider with Horizontal Slide Animation */}
+        {/* Right - Image Slider */}
         <AnimatePresence custom={direction} mode="wait">
           <motion.div
             key={activeCategory}
@@ -153,7 +163,7 @@ const Rooms = () => {
             initial="enter"
             animate="center"
             exit="exit"
-            className="shadow-lg rounded-r-2xl overflow-hidden"
+            className="shadow-lg overflow-hidden"
           >
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
@@ -161,8 +171,7 @@ const Rooms = () => {
               slidesPerView={1}
               navigation
               pagination={{ clickable: true }}
-              autoplay={{ delay: 4000 }}
-              className="rounded-r-2xl"
+              autoplay={{ delay: 4000, disableOnInteraction: false }}
             >
               {images.map((img, index) => (
                 <SwiperSlide key={index}>
@@ -170,7 +179,7 @@ const Rooms = () => {
                     src={img}
                     alt={activeCategory}
                     loading="lazy"
-                    className="w-full h-[380px] object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-[390px] object-cover"
                   />
                 </SwiperSlide>
               ))}
@@ -179,7 +188,7 @@ const Rooms = () => {
         </AnimatePresence>
       </div>
 
-      {/* Amenities Section */}
+      {/* Amenities Section - Premium Look */}
       <motion.div
         key={activeCategory + "-amenities"}
         variants={fadeInUp}
@@ -189,14 +198,14 @@ const Rooms = () => {
         className="mt-16 max-w-6xl mx-auto px-4"
       >
         <h3 className="text-2xl font-bold text-gray-800 mb-6">Amenities</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {amenities.map((item, index) => (
             <div
               key={index}
-              className="flex items-center gap-2 text-gray-700 bg-white p-4 rounded-lg shadow-sm"
+              className="flex items-center gap-3 text-gray-700 bg-white p-5 shadow-md hover:shadow-lg transition transform hover:-translate-y-1"
             >
-              <CheckCircle2 className="w-5 h-5 text-amber-500" />
-              <span>{item}</span>
+              <CheckCircle2 className="w-6 h-6 text-amber-500 flex-shrink-0" />
+              <span className="font-medium">{item}</span>
             </div>
           ))}
         </div>

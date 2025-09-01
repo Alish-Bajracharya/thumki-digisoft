@@ -38,14 +38,14 @@ const testimonials = [
   },
 ];
 
-// Motion Variants for stagger effect
+// Motion Variants
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.2, // stagger by index
+      delay: i * 0.2,
       duration: 0.8,
       ease: "easeOut",
     },
@@ -54,32 +54,32 @@ const fadeUp = {
 
 const Review = () => {
   return (
-    <div className="relative py-24 bg-gradient-to-b from-[#0d0d0d] via-[#111] to-[#0d0d0d]">
-      <div className="max-w-6xl mx-auto px-6">
+    <div className="relative py-24 bg-gradient-to-b from-[#0e0e0e] via-[#1a1a1a] to-[#101010]">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <p className="uppercase tracking-widest text-gray-400 font-medium">
+          <p className="uppercase tracking-[6px] text-gray-400 text-sm">
             Testimony
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#dcca87] drop-shadow-lg">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#dcca87]">
             What Our Guests Say
           </h2>
-          <div className="w-24 h-1 bg-[#dcca87] mx-auto mt-4 rounded-full"></div>
+          <div className="w-28 h-[2px] bg-[#dcca87] mx-auto mt-5"></div>
         </motion.div>
 
         {/* Swiper Carousel */}
         <Swiper
           modules={[Navigation, Autoplay]}
-          spaceBetween={40}
+          spaceBetween={50}
           slidesPerView={1}
           navigation
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 6000, disableOnInteraction: false }}
           breakpoints={{
             768: { slidesPerView: 2 },
             1200: { slidesPerView: 2 },
@@ -93,28 +93,32 @@ const Review = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={index}
-                className="relative group bg-[#1a1a1a]/90 backdrop-blur-md rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-[#333]"
+                className="relative group bg-[#141414]/95 border border-[#2a2a2a] p-10 text-left shadow-lg hover:shadow-2xl transition-all duration-500"
               >
-                {/* Quote Icon */}
-                <FaQuoteRight className="absolute top-6 right-6 text-[#dcca87] text-3xl opacity-60 group-hover:scale-110 transition-transform" />
+                {/* Big Quote Background */}
+                <FaQuoteRight className="absolute text-[#dcca87]/10 text-[120px] top-6 right-6 pointer-events-none" />
 
                 {/* Profile */}
-                <div className="flex items-center gap-6 mb-6">
-                  <img
-                    src={review.img}
-                    alt={review.name}
-                    className="w-20 h-20 object-cover rounded-full border-2 border-[#dcca87] shadow-md"
-                  />
+                <div className="flex items-center gap-6 mb-8">
+                  <div className="w-20 h-20 overflow-hidden border-2 border-[#dcca87]">
+                    <img
+                      src={review.img}
+                      alt={review.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                   <div>
                     <h4 className="text-xl font-semibold text-white">
                       {review.name}
                     </h4>
-                    <p className="text-sm text-gray-400">{review.role}</p>
+                    <p className="text-sm text-gray-400 uppercase tracking-wide">
+                      {review.role}
+                    </p>
                   </div>
                 </div>
 
                 {/* Text */}
-                <p className="text-gray-300 leading-relaxed italic">
+                <p className="text-gray-300 leading-relaxed italic text-lg relative z-10">
                   “{review.text}”
                 </p>
               </motion.div>

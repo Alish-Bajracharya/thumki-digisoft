@@ -1,19 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { UtensilsCrossed, Briefcase } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 import restaurantImg from "../../assets/dining&conference/res.jpg";
 import conferenceImg from "../../assets/dining&conference/conf.jpg";
 import bg from "../../assets/bg/bg1.jpg";
 
 const DiningConferenceSection = () => {
+  const navigate = useNavigate();
+
   return (
     <section
       id="dining-conference"
       className="relative py-20 lg:py-32"
-      style={{ backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+      {/* Light Overlay */}
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
       <div className="relative max-w-7xl mx-auto space-y-28 px-6 lg:px-8">
         {/* Section Title */}
@@ -22,19 +30,19 @@ const DiningConferenceSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <h2 className="text-4xl lg:text-5xl font-extrabold text-orange-200 drop-shadow-lg">
+          <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 drop-shadow-lg">
             Exceptional Dining & Business Facilities
           </h2>
-          <p className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
-            Indulge in world-class dining or host your events in premium spaces designed for both comfort and productivity.
+          <p className="mt-4 text-lg text-gray-700 leading-relaxed">
+            Indulge in world-class dining or host your events in premium spaces designed for comfort, elegance, and productivity.
           </p>
         </motion.div>
 
         {/* Restaurant */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl shadow-2xl overflow-hidden bg-white/95 backdrop-blur-md"
+          className="grid grid-cols-1 lg:grid-cols-2 shadow-2xl overflow-hidden bg-white/70 backdrop-blur-md border-r-4 border-orange-400"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -44,9 +52,9 @@ const DiningConferenceSection = () => {
             <img
               src={restaurantImg}
               alt="Restaurant"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
           </div>
 
           <div className="p-10 lg:p-16 flex flex-col justify-center">
@@ -59,17 +67,21 @@ const DiningConferenceSection = () => {
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
               Restaurant at Thumki Resort
             </h3>
-            <p className="mt-5 text-gray-600 leading-relaxed text-lg">
-              A taste of warm hospitality with a dining experience like no other.
-              Our staff ensures exceptional service, crafted meals, and a homely
-              atmosphere amidst the serene beauty of Balthali.
+            <p className="mt-5 text-gray-700 leading-relaxed text-lg">
+              Experience warm hospitality with exquisite meals prepared by skilled chefs. Enjoy premium dining in a serene environment, perfect for both casual and special occasions.
             </p>
+            <button
+              onClick={() => navigate("/dining")}
+              className="mt-6 px-8 py-3 bg-amber-500 text-white font-semibold shadow-lg hover:bg-amber-600 transition tracking-wide w-max"
+            >
+              Book Dining
+            </button>
           </div>
         </motion.div>
 
         {/* Conference */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 rounded-3xl shadow-2xl overflow-hidden bg-white/95 backdrop-blur-md"
+          className="grid grid-cols-1 lg:grid-cols-2 shadow-2xl overflow-hidden bg-white/70 backdrop-blur-md border-l-4 border-orange-400"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -85,20 +97,24 @@ const DiningConferenceSection = () => {
             <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-snug">
               Business Events at Thumki Resort
             </h3>
-            <p className="mt-5 text-gray-600 leading-relaxed text-lg">
-              A perfect venue for conferences, meetings, and retreats with
-              state-of-the-art facilities, personalized catering, and a serene
-              atmosphere to inspire productivity and collaboration.
+            <p className="mt-5 text-gray-700 leading-relaxed text-lg">
+              Host conferences, meetings, and retreats in sophisticated spaces equipped with modern amenities. Personalized service ensures every event is executed seamlessly.
             </p>
+            <button
+              onClick={() => navigate("/conference")}
+              className="mt-6 px-8 py-3 bg-amber-500 text-white font-semibold shadow-lg hover:bg-amber-600 transition tracking-wide w-max"
+            >
+              Book Conference
+            </button>
           </div>
 
           <div className="order-1 lg:order-2 relative overflow-hidden group">
             <img
               src={conferenceImg}
               alt="Conference & Meeting Hall"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
           </div>
         </motion.div>
       </div>

@@ -75,7 +75,7 @@ const Amenities = () => {
       >
         {facilities.map((facility, index) => (
           <SwiperSlide key={index}>
-            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+            <div className="relative  overflow-hidden shadow-lg group">
               <img
                 src={facility.img}
                 alt={facility.title}
