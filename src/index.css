@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Work Sans', 'Roboto', sans-serif;
+
+}
+
+
+.input {
+  @apply w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500;
+}
+@layer utilities {
+  .animate-fadeInLeft {
+    animation: fadeInLeft 0.8s ease forwards;
+  }
+  .animate-fadeInRight {
+    animation: fadeInRight 0.8s ease forwards;
+  }
+  .animate-fadeDown {
+    animation: fadeDown 0.8s ease forwards;
+  }
+
+  @keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
