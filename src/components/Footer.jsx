@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaFacebookF, FaInstagram, FaArrowUp } from 'react-icons/fa'
 import { FiTwitter } from 'react-icons/fi'
-import logo from "../assets/logo/logo.jpeg";
+import logo from "../assets/logo/logo.png";
 import booking from "../assets/logo/booking.jpg";
 import trip from "../assets/logo/trip.png";
 import agoda from "../assets/logo/agoda.png";
@@ -55,7 +55,7 @@ const Footer = () => {
                         <img 
                             src={logo}
                             alt="Thumki Logo" 
-                            className="w-[120px] h-auto mb-4 rounded-full shadow-lg"
+                            className="w-[300px] h-[200px] mb-4 rounded-full shadow-lg"
                         />
                         <p className='text-[#fff] font-OS text-base leading-7 text-center italic'>
                             "The best way to find yourself is to lose yourself in the service of others.”
