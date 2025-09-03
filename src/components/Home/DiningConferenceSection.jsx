@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 import { UtensilsCrossed, Briefcase } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import restaurant1 from "../../assets/dining&conference/res.jpg";
-import restaurant2 from "../../assets/dining&conference/res2.jpg";
-import restaurant3 from "../../assets/dining&conference/res3.jpg";
-import restaurant4 from "../../assets/dining&conference/res3.jpg";
-import conferenceImg from "../../assets/dining&conference/conf.jpg";
+import restaurant1 from "../../assets/dining-conference/res.jpg";
+import restaurant2 from "../../assets/dining-conference/res2.jpg";
+import restaurant3 from "../../assets/dining-conference/res3.jpg";
+import restaurant4 from "../../assets/dining-conference/res3.jpg";
+import conferenceImg from "../../assets/dining-conference/conf.jpg";
 import bg from "../../assets/bg/bg1.jpg";
 
 const DiningConferenceSection = () => {
