@@ -1,10 +1,22 @@
 import React, { useRef, useState, useEffect } from "react";
 import { BsArrowLeftShort, BsArrowRightShort, BsX } from "react-icons/bs";
 
-import gallery01 from "../../assets/Views/view1.JPG";
-import gallery02 from "../../assets/Views/view2.JPG";
-import gallery03 from "../../assets/Views/view3.JPG";
-import gallery04 from "../../assets/Sliders/slider1.JPG";
+import gallery01 from "../../assets/Views/view0.JPG";
+import gallery02 from "../../assets/Views/view1.JPG";
+import gallery03 from "../../assets/Views/view2.JPG";
+import gallery04 from "../../assets/Views/view3.JPG";
+import gallery05 from "../../assets/Views/view4.jpg";
+import gallery06 from "../../assets/Views/view5.jpeg";
+import gallery07 from "../../assets/Views/view6.jpg";
+import gallery08 from "../../assets/Views/view7.jpg";
+import gallery09 from "../../assets/Views/view8.JPG";
+import gallery10 from "../../assets/Views/view9.JPG";
+import gallery11 from "../../assets/Views/view10.jpg";
+import gallery12 from "../../assets/Views/view01.JPG";
+import gallery13 from "../../assets/Views/view02.JPG";
+import gallery14 from "../../assets/Views/view03.JPG";
+import gallery15 from "../../assets/Views/view04.JPG";
+
 
 const SubHeading = ({ title }) => (
   <div className="mb-3 flex flex-col items-center xl:items-start">
@@ -27,7 +39,8 @@ const Gallery = () => {
       : (scrollRef.current.scrollLeft += scrollAmount);
   };
 
-  const galleryImages = [gallery01, gallery02, gallery03, gallery04];
+  const galleryImages = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06,
+   gallery07, gallery08, gallery09, gallery10, gallery11, gallery12, gallery13, gallery14, gallery15];
 
   const openLightbox = (index) => {
     setCurrentIndex(index);

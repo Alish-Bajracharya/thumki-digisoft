@@ -36,6 +36,18 @@ const testimonials = [
     role: "Food Vlogger",
     text: "The food is divine! Every dish feels like it’s made with love. Dining here is as much an experience as staying at the resort.",
   },
+  {
+    img: r4,
+    name: "Dipson Rayamajhi",
+    role: "Tourist",
+    text: "The food is divine! Every dish feels like it’s made with love. Dining here is as much an experience as staying at the resort.",
+  },
+    {
+    img: r3,
+    name: "Pujan Maharjan",
+    role: "Videographer",
+    text: "A premium experience with personalized service. From the rooms to the dining, every detail was thoughtfully curated. Highly recommended!",
+  },
 ];
 
 // Motion Variants
@@ -54,7 +66,7 @@ const fadeUp = {
 
 const Review = () => {
   return (
-    <div className="relative py-24 bg-gradient-to-b from-[#0e0e0e] via-[#1a1a1a] to-[#101010]">
+    <div className="relative py-24 bg-gradient-to-b from-[#adadad] via-[#c2c0c0] to-[#adadad]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <motion.div
@@ -64,13 +76,13 @@ const Review = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <p className="uppercase tracking-[6px] text-gray-400 text-sm">
+          <p className="uppercase tracking-[6px] text-amber-900 text-sm">
             Testimony
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#dcca87]">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#3d90f0]">
             What Our Guests Say
           </h2>
-          <div className="w-28 h-[2px] bg-[#dcca87] mx-auto mt-5"></div>
+          <div className="w-28 h-[2px] bg-[#3d90f0] mx-auto mt-5"></div>
         </motion.div>
 
         {/* Swiper Carousel */}
@@ -93,14 +105,14 @@ const Review = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={index}
-                className="relative group bg-[#141414]/95 border border-[#2a2a2a] p-10 text-left shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="relative group bg-[#c2c0c0]/95 border border-[#2a2a2a] p-10 text-left shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 {/* Big Quote Background */}
-                <FaQuoteRight className="absolute text-[#dcca87]/10 text-[120px] top-6 right-6 pointer-events-none" />
+                <FaQuoteRight className="absolute text-[#3d90f0]/10 text-[120px] top-6 right-6 pointer-events-none" />
 
                 {/* Profile */}
                 <div className="flex items-center gap-6 mb-8">
-                  <div className="w-20 h-20 overflow-hidden border-2 border-[#dcca87]">
+                  <div className="w-20 h-20 overflow-hidden border-2 border-[#e9ad53]">
                     <img
                       src={review.img}
                       alt={review.name}
@@ -108,17 +120,17 @@ const Review = () => {
                     />
                   </div>
                   <div>
-                    <h4 className="text-xl font-semibold text-white">
+                    <h4 className="text-xl font-semibold text-black">
                       {review.name}
                     </h4>
-                    <p className="text-sm text-gray-400 uppercase tracking-wide">
+                    <p className="text-sm text-orange-900 uppercase tracking-wide">
                       {review.role}
                     </p>
                   </div>
                 </div>
 
                 {/* Text */}
-                <p className="text-gray-300 leading-relaxed italic text-lg relative z-10">
+                <p className="text-gray-700 leading-relaxed text-justify text-lg relative z-10">
                   “{review.text}”
                 </p>
               </motion.div>
