@@ -12,7 +12,7 @@ const Loader = () => {
       <motion.img
         src={Logo}
         alt="Logo"
-        className="w-96 h-52"
+        className="w-80 h-52"
         animate={{ scale: [1, 1.2, 1] }}
         transition={{ duration: 1.5, repeat: Infinity }}
       />
