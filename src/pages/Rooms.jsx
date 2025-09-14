@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { RoomCard } from "../components/Room/RoomCard";
-import room1 from "../assets/Rooms/room1.jpg";
-import room2 from "../assets/Rooms/room2.jpg";
-import room3 from "../assets/Rooms/room3.jpg";
-import room4 from "../assets/Rooms/room4.jpg";
-import room5 from "../assets/Rooms/room1.jpg";
-import room6 from "../assets/Rooms/room2.jpg";
+import room1 from "../assets/Rooms/room1.JPG";
+import room2 from "../assets/Rooms/room2.JPG";
+import room3 from "../assets/Rooms/room3.JPG";
+import room4 from "../assets/Rooms/room4.JPG";
+import room5 from "../assets/Rooms/room1.JPG";
+import room6 from "../assets/Rooms/room2.JPG";
 
 export const Rooms = () => {
   const deluxeRooms = [
