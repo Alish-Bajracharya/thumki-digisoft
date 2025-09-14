@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import Loader from "./components/Loader";
+import { Rooms } from "./pages/Rooms";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,8 @@ function App() {
       {!loading && (
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Rooms" element={<Rooms />} />
+
         </Routes>
       )}
 

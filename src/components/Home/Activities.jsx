@@ -54,7 +54,7 @@ const Activities = () => {
   return (
     <section
       id="activities"
-      className="py-20 lg:py-28 bg-gradient-to-b from-white via-blue-50/40 to-white px-6"
+      className="py-10 md:py-16 bg-gradient-to-b from-white via-blue-50/40 to-white px-6"
     >
       {/* Title */}
       <motion.div
@@ -62,9 +62,9 @@ const Activities = () => {
         whileInView="show"
         viewport={{ once: true }}
         variants={fadeInUp}
-        className="text-center mb-16 max-w-3xl mx-auto"
+        className="text-center mb-4 max-w-3xl mx-auto"
       >
-        <h6 className="uppercase text-amber-500 font-bold text-sm tracking-[4px] mb-2">
+        <h6 className="uppercase text-blue-900 font-bold text-sm tracking-[4px] mb-2">
           Experiences
         </h6>
         <h1 className="lg:text-4xl text-3xl font-bold text-gray-900 leading-tight">
@@ -79,7 +79,7 @@ const Activities = () => {
       </motion.div>
 
       {/* Activity Cards */}
-      <div className="bg-[#FAF7F2] py-12 px-6">
+      <div className=" py-6 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
           {experiences.map((exp, index) => (
             <motion.div

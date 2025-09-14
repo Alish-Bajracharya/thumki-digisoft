@@ -66,7 +66,7 @@ const fadeUp = {
 
 const Review = () => {
   return (
-    <div className="relative py-24 bg-gradient-to-b from-[#adadad] via-[#c2c0c0] to-[#adadad]">
+    <div className="relative py-10 md:py-16 bg-gradient-to-b from-[#adadad] via-[#c2c0c0] to-[#adadad]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <motion.div

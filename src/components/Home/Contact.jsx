@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const Contact = () => {
   return (
-    <section className="relative w-full py-24 bg-gradient-to-b from-gray-100 via-white to-gray-100">
+    <section className="relative w-full py-10 md:py-16 bg-gradient-to-b from-gray-100 via-white to-gray-100">
       {/* Decorative Blur Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-20 w-72 h-72 bg-amber-300/40 blur-3xl"></div>
@@ -48,7 +48,7 @@ const Contact = () => {
               <p className="font-semibold text-gray-700">Phone:</p>
               <a
                 href="tel:+977-9767650124"
-                className="text-blue-700 hover:text-amber-500 font-medium transition"
+                className="text-blue-900 hover:text-amber-500 font-medium transition"
               >
                 +977-9767650124
               </a>
@@ -57,7 +57,7 @@ const Contact = () => {
               <p className="font-semibold text-gray-700">Main Phone:</p>
               <a
                 href="tel:+977-9851078863"
-                className="text-blue-700 hover:text-amber-500 font-medium transition"
+                className="text-blue-900 hover:text-amber-500 font-medium transition"
               >
                 +977-9851078863
               </a>
@@ -67,7 +67,7 @@ const Contact = () => {
 
         {/* Drop a Line */}
         <motion.div
-          className="relative bg-white/70 backdrop-blur-xl border border-gray-200  shadow-2xl flex flex-col justify-center items-center p-12 hover:shadow-blue-400/40 hover:scale-[1.03] transition"
+          className="relative bg-white/70 backdrop-blur-xl border border-gray-200  shadow-2xl flex flex-col justify-center items-center p-12 hover:shadow-blue-500/40 hover:scale-[1.03] transition"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}

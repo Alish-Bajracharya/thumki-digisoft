@@ -21,7 +21,7 @@ const Footer = () => {
     const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
     return (
-        <footer className='relative bg-[#0c0c0c] text-white pt-16 pb-6'>
+        <footer className='relative bg-[#0c0c0c] text-white py-10 md:py-16'>
             <div className="container mx-auto px-6 lg:px-20">
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left'>
                     

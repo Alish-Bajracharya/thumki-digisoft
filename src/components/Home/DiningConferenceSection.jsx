@@ -8,7 +8,7 @@ import restaurant2 from "../../assets/dining-conference/res2.jpg";
 import restaurant3 from "../../assets/dining-conference/res3.jpg";
 import restaurant4 from "../../assets/dining-conference/res3.jpg";
 import conferenceImg from "../../assets/dining-conference/conf.jpg";
-import bg from "../../assets/bg/bg1.jpg";
+import bg from "../../assets/bg/bg7.jpg";
 
 const DiningConferenceSection = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const DiningConferenceSection = () => {
   return (
     <section
       id="dining-conference"
-      className="relative py-20 lg:py-32"
+      className="relative py-10 md:py-16"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -39,14 +39,14 @@ const DiningConferenceSection = () => {
       {/* Light Overlay */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-sm"></div>
 
-      <div className="relative max-w-7xl mx-auto space-y-28 px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto space-y-0 px-6 lg:px-8">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-3xl mx-auto"
+          className="text-center mb-12 max-w-3xl mx-auto"
         >
           <h2 className="text-4xl lg:text-5xl font-extrabold text-blue-900 drop-shadow-lg">
             Exceptional Dining & Business Facilities
@@ -59,7 +59,7 @@ const DiningConferenceSection = () => {
 
         {/* Restaurant with Auto-Sliding Images */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 shadow-2xl overflow-hidden bg-white/70 backdrop-blur-md border-r-4 border-orange-400"
+          className="grid grid-cols-1 lg:grid-cols-2  shadow-2xl overflow-hidden bg-white/70 backdrop-blur-md border-r-4 border-orange-400"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -80,7 +80,7 @@ const DiningConferenceSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"></div>
           </div>
 
-          <div className="p-10 lg:p-16 flex flex-col justify-center">
+          <div className="p-6 lg:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               <UtensilsCrossed className="text-amber-600 w-8 h-8" />
               <span className="uppercase tracking-wide text-amber-600 font-semibold text-sm">
@@ -112,7 +112,7 @@ const DiningConferenceSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
         >
-          <div className="order-2 lg:order-1 p-10 lg:p-16 flex flex-col justify-center">
+          <div className="order-2 lg:order-1 p-6 lg:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               <Briefcase className="text-amber-600 w-8 h-8" />
               <span className="uppercase tracking-wide text-amber-600 font-semibold text-sm">

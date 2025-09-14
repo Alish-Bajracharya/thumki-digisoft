@@ -73,7 +73,7 @@ const Gallery = () => {
   });
 
   return (
-    <section className="bg-gradient-to-b from-white via-blue-50 to-blue-100 py-20 px-6 sm:px-12 lg:px-20">
+    <section className="bg-gradient-to-b from-white via-blue-50 to-blue-100 py-10 md:py-16 px-6 sm:px-12 lg:px-20">
       <div className="flex flex-col xl:flex-row items-center justify-between gap-14">
         {/* Left Content */}
         <div className="w-full xl:w-2/5 text-center xl:text-left">

@@ -16,6 +16,7 @@ import "swiper/css/pagination";
 import bbq from '../../assets/facilites/bbq.jpg'
 import bar from '../../assets/facilites/bar.jpg'
 
+
 const Amenities = () => {
   const facilities = [
     {
@@ -51,7 +52,7 @@ const Amenities = () => {
   ];
 
   return (
-    <div className="px-6 py-12 bg-amber-100" >
+    <div className="px-6 py-10 md:py-16 bg-amber-100" >
       <h1 className="lg:text-4xl text-orange-400 text-center text-3xl font-bold">THUMKI</h1>
       <h2 className="text-3xl  font-bold text-center mb-4">Resort Facilities</h2>
       <p className="text-center max-w-2xl mx-auto text-gray-600 mb-10">
@@ -79,7 +80,7 @@ const Amenities = () => {
               <img
                 src={facility.img}
                 alt={facility.title}
-                className="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500"
+                className="w-full h-96 object-cover transform group-hover:scale-110 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white">
                 <div className="flex items-center gap-2 text-lg font-semibold">
