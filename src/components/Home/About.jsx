@@ -3,7 +3,7 @@ import { motion } from "framer-motion"; // 👈 Import Framer Motion
 import view1 from "../../assets/Views/view1.JPG";
 import view2 from "../../assets/Views/view0.JPG";
 import view3 from "../../assets/Views/view3.JPG";
-import bg from "../../assets/bg/bg4.jpg";
+import bg from "../../assets/bg/bg7.jpg";
 
 const About = () => {
   return (

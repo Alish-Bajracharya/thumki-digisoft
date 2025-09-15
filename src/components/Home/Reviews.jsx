@@ -66,7 +66,7 @@ const fadeUp = {
 
 const Review = () => {
   return (
-    <div className="relative py-10 md:py-16 bg-gradient-to-b from-[#adadad] via-[#c2c0c0] to-[#adadad]">
+    <div className="relative py-10 md:py-16 bg-gradient-to-b from-[#f8f8f8] via-[#eeeeee] to-[#f8f8f8]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Heading */}
         <motion.div
@@ -79,10 +79,10 @@ const Review = () => {
           <p className="uppercase tracking-[6px] text-amber-900 text-sm">
             Testimony
           </p>
-          <h2 className="text-4xl md:text-6xl font-bold text-[#3d90f0]">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#f8b92f]">
             What Our Guests Say
           </h2>
-          <div className="w-28 h-[2px] bg-[#3d90f0] mx-auto mt-5"></div>
+          <div className="w-28 h-[2px] bg-[#f8b92f] mx-auto mt-5"></div>
         </motion.div>
 
         {/* Swiper Carousel */}
@@ -105,7 +105,7 @@ const Review = () => {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3 }}
                 custom={index}
-                className="relative group bg-[#c2c0c0]/95 border border-[#2a2a2a] p-10 text-left shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="relative group bg-[#eeeeee]/95 border border-[#2a2a2a] p-10 text-left shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 {/* Big Quote Background */}
                 <FaQuoteRight className="absolute text-[#3d90f0]/10 text-[120px] top-6 right-6 pointer-events-none" />

@@ -84,16 +84,18 @@ const Hero = () => {
             style={{ backgroundImage: `url(${slide.bg})` }}
           >
             {/* Dark Overlay */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/40 via-black/20 to-black/50"></div>
-
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
             {/* Text Content */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-4 lg:px-20">
               <div className="hero-subtitle uppercase tracking-[8px] text-sm md:text-base text-white mb-10 font-semibold">
                 Just Enjoy and Relax
               </div>
-              <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-elegant bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-white leading-tight mb-6">
-                {slide.title}
-              </h1>
+                <h1
+                  className="hero-title text-4xl md:text-6xl lg:text-7xl font-elegant bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-white leading-tight mb-6"
+                  style={{ textShadow: "2px 2px 6px rgba(0,0,0,0.6)" }}
+                >
+                  {slide.title}
+                </h1>
               <button className="hero-btn mt-2 px-6 py-3 text-lg md:text-xl bg-amber-500 text-white shadow-lg hover:scale-105 transition-transform duration-300">
                 {slide.btnText}
               </button>

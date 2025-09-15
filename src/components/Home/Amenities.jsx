@@ -52,7 +52,7 @@ const Amenities = () => {
   ];
 
   return (
-    <div className="px-6 py-10 md:py-16 bg-amber-100" >
+    <div className="px-6 py-10 md:py-16 bg-[#F5EFDB]" >
       <h1 className="lg:text-4xl text-orange-400 text-center text-3xl font-bold">THUMKI</h1>
       <h2 className="text-3xl  font-bold text-center mb-4">Resort Facilities</h2>
       <p className="text-center max-w-2xl mx-auto text-gray-600 mb-10">
