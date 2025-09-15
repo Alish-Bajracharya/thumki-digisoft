@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home";
 import Loader from "./components/Loader";
 import { Rooms } from "./pages/Rooms";
+import About from "./pages/About";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Rooms" element={<Rooms />} />
+          <Route path="/About" element={<About />} />
 
         </Routes>
       )}

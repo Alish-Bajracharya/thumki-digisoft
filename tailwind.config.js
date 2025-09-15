@@ -7,7 +7,7 @@ export default {
   theme: {
   extend: {
     fontFamily: {
-      elegant: ['"Playfair Display"', 'serif'],
+      elegant: ['"Playfair Display"'],
     },
     letterSpacing: {
       widest: '0.2em',

@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaTimes, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import Logo from "../assets/logo/thumki-logo.png";
+import NavImage from "../assets/nav.JPG";
 import { Link } from "react-router-dom";
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState(true);
-
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Accommodation", href: "/Rooms" },
-    { name: "About Us", href: "#about" },
-    { name: "Joyful Meets", href: "#meets" },
-    { name: "Activities", href: "#activities" },
-    { name: "Blogs", href: "#blog" },
-    { name: "Gallery", href: "#gallery" },
-  ];
 
   // Hide/show navbar on scroll
   useEffect(() => {
@@ -36,25 +28,36 @@ const Navbar = () => {
           visible && !menuOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="flex items-center justify-between px-6 lg:px-14 h-[90px] lg:h-[90px] bg-white/60 backdrop-blur-sm">
-          {/* Logo left */}
+        <div className="flex items-center justify-between px-6 lg:px-14 h-[90px] bg-white/0 backdrop-blur-sm">
+          {/* Logo */}
           <a href="/" className="flex items-center">
             <img
               src={Logo}
               alt="Thumki Resort Logo"
-              className="w-28 h-16 object-cover"
+              className="w-32 h-20 object-cover"
             />
           </a>
 
-          {/* Menu button right */}
-          <button
-            className="relative w-10 h-8 flex flex-col justify-between group z-50"
-            onClick={() => setMenuOpen(true)}
-          >
-            <span className="block h-1 w-full bg-blue-900  transition-all duration-300 group-hover:bg-amber-400"></span>
-            <span className="block h-1 w-3/4 bg-blue-800  transition-all duration-300 group-hover:w-full group-hover:bg-amber-400"></span>
-            <span className="block h-1 w-1/2 bg-blue-900  transition-all duration-300 group-hover:w-full group-hover:bg-amber-400"></span>
-          </button>
+          {/* Right section */}
+          <div className="flex items-center gap-6">
+            {/* Book Button */}
+            <a
+              href="/booking"
+              className="px-3 py-3 bg-blue-900 text-white text-xs tracking-wide uppercase hover:bg-amber-500 transition-all duration-300"
+            >
+              Book Your Stay
+            </a>
+
+            {/* Menu button */}
+            <button
+              className="relative w-10 h-8 flex flex-col justify-between group z-50"
+              onClick={() => setMenuOpen(true)}
+            >
+              <span className="block h-1 w-full bg-blue-900 transition-all duration-300 group-hover:bg-amber-400"></span>
+              <span className="block h-1 w-3/4 bg-blue-800 transition-all duration-300 group-hover:w-full group-hover:bg-amber-400"></span>
+              <span className="block h-1 w-1/2 bg-blue-900 transition-all duration-300 group-hover:w-full group-hover:bg-amber-400"></span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -64,106 +67,108 @@ const Navbar = () => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {/* Left: Nav Links */}
+        {/* Left: Background Image */}
         <div
-          className="relative w-full md:w-1/2 flex flex-col justify-center p-12 text-white"
+          className="hidden md:block w-1/2"
           style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1602080755398-2dbf1152a01d?auto=format&fit=crop&w=1470&q=80')",
+            backgroundImage: `url(${NavImage})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-        >
-          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
-          <nav className="relative z-50 flex flex-col justify-center h-full space-y-8 text-3xl font-semibold tracking-wide">
-            {navLinks.map((link, i) => {
-              // For internal routes use <Link>, for section scroll keep <a>
-              const isInternalRoute = link.href.startsWith("/");
-              return isInternalRoute ? (
+        ></div>
+
+        {/* Right: Blue Background with Nav & Info */}
+        <div className="relative w-full md:w-1/2 bg-blue-950 text-white flex flex-col justify-center p-10 lg:p-16">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 w-full">
+            {/* Navigation Links */}
+            <div className="flex flex-col space-y-8 font-['Playfair_Display']">
+              {/* Accommodation + Sub Links */}
+              <div className="opacity-0 animate-slideUp" style={{ animationDelay: "0.2s" }}>
                 <Link
-                  key={i}
-                  to={link.href}
+                  to="/Rooms"
                   onClick={() => setMenuOpen(false)}
-                  className="opacity-0 animate-fadeInUp"
-                  style={{
-                    animationDelay: `${i * 0.15 + 0.3}s`,
-                    animationFillMode: "forwards",
-                  }}
+                  className="text-xl text-gray-400 font-normal tracking-wide pointer-events-none transition"
                 >
-                  <span className="relative group">
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
+                  Accommodations
                 </Link>
-              ) : (
-                <a
-                  key={i}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="opacity-0 animate-fadeInUp"
-                  style={{
-                    animationDelay: `${i * 0.15 + 0.3}s`,
-                    animationFillMode: "forwards",
-                  }}
-                >
-                  <span className="relative group">
-                    {link.name}
-                    <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
-                  </span>
-                </a>
-              );
-            })}
-          </nav>
-        </div>
+                <div className="flex flex-col mt-4 ml-4 space-y-2">
+                  <Link
+                    to="/Rooms/Deluxe"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-2xl font-medium hover:text-amber-400 transition"
+                  >
+                    DELUXE ROOMs
+                  </Link>
+                  <Link
+                    to="/Rooms/Twin"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-2xl font-medium hover:text-amber-400 transition"
+                  >
+                    TWIN ROOMs
+                  </Link>
+                </div>
+              </div>
 
-        {/* Right: Resort Info */}
-        <div
-          className="hidden md:flex relative w-1/2 flex-col justify-center items-center text-white p-16"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute text-center inset-0 bg-gradient-to-b from-black/80 via-black/70 to-transparent backdrop-blur-sm"></div>
-          <div className="relative text-center z-50 flex flex-col space-y-6 max-w-lg">
-            <img
-              src={Logo}
-              alt="Thumki Resort Logo"
-              className="w-32 h-20 object-cover rounded-md shadow-lg mx-auto"
-            />
-            <h1
-              className="text-5xl font-extrabold text-orange-400 drop-shadow-lg tracking-wide opacity-0 animate-fadeInDown"
-              style={{ animationDelay: "0.3s", animationFillMode: "forwards" }}
-            >
-              Thumki Resort
-            </h1>
+              {/* Separator */}
+              <hr className="border-gray-500 my-6 w-full opacity-0 animate-fadeIn" style={{ animationDelay: "0.4s" }} />
 
-            <a
-              href="https://maps.app.goo.gl/Pndh65WvBprfAAeg8"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 text-xl text-gray-200 py-5 hover:text-amber-500 opacity-0 animate-fadeInDown"
-              style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
-            >
-              <FaMapMarkerAlt className="text-amber-500" />
-              Balthali 11, Panauti Municipality, Kavre, Nepal
-            </a>
-            <a
-              href="tel:+977-9851078863"
-              className="flex items-center justify-center gap-3 text-lg text-gray-300 py-5 hover:text-amber-500 opacity-0 animate-fadeInDown"
-              style={{ animationDelay: "0.9s", animationFillMode: "forwards" }}
-            >
-              <FaPhone className="text-amber-500" /> +977-9851078863
-            </a>
-            <a
-              href="mailto:thumkiresort69@gmail.com"
-              className="flex items-center justify-center gap-3 text-lg text-gray-300 py-5 hover:text-amber-500 opacity-0 animate-fadeInDown"
-              style={{ animationDelay: "1.2s", animationFillMode: "forwards" }}
-            >
-              <FaEnvelope className="text-amber-500" /> thumkiresort69@gmail.com
-            </a>
+              {/* Other Nav Links */}
+              <div className="flex flex-col space-y-4 text-3xl font-medium">
+                {[
+                  { name: "About Us", href: "/About" },
+                  { name: "Joyful Meets", href: "#meets" },
+                  { name: "Activities", href: "#activities" },
+                  { name: "Blogs", href: "#blog" },
+                  { name: "Gallery", href: "#gallery" },
+                  { name: "Contact", href: "#contact" },
+                ].map((link, i) =>
+                  link.href.startsWith("/") ? (
+                    <Link
+                      key={i}
+                      to={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="hover:text-amber-400 opacity-0 animate-slideUp"
+                      style={{ animationDelay: `${0.6 + i * 0.15}s` }}
+                    >
+                      {link.name}
+                    </Link>
+                  ) : (
+                    <a
+                      key={i}
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="hover:text-amber-400 opacity-0 animate-slideUp"
+                      style={{ animationDelay: `${0.6 + i * 0.15}s` }}
+                    >
+                      {link.name}
+                    </a>
+                  )
+                )}
+              </div>
+            </div>
+
+            {/* Contact Information */}
+            <div className="flex flex-col space-y-6 text-sm font-['Inter'] opacity-0 animate-fadeIn" style={{ animationDelay: "1.2s" }}>
+              <a
+                href="https://maps.app.goo.gl/Pndh65WvBprfAAeg8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 hover:text-amber-400"
+              >
+                <FaMapMarkerAlt className="text-gray-400" />
+                Balthali 11, Panauti Municipality,<br />
+                Kavre, Nepal
+              </a>
+              <a href="tel:+977-9851078863" className="flex items-center gap-3 hover:text-amber-400">
+                <FaPhone className="text-gray-500" /> +977-9851078863
+              </a>
+              <a
+                href="mailto:thumkiresort69@gmail.com"
+                className="flex items-center gap-3 hover:text-amber-500"
+              >
+                <FaEnvelope className="text-gray-500" /> thumkiresort69@gmail.com
+              </a>
+            </div>
           </div>
         </div>
 
@@ -178,17 +183,21 @@ const Navbar = () => {
 
       {/* Animations */}
       <style>{`
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px); }
+        @keyframes slideUp {
+          from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        .animate-fadeInUp { animation: fadeInUp 0.8s ease forwards; }
+        .animate-slideUp {
+          animation: slideUp 0.7s ease forwards;
+        }
 
-        @keyframes fadeInDown {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
         }
-        .animate-fadeInDown { animation: fadeInDown 0.8s ease forwards; }
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease forwards;
+        }
       `}</style>
     </>
   );
